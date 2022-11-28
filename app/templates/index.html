@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap5 %}
+{% block title_blcok %}
+<title>Instargam</title>
+{% endblock %}
+{% block content_block %}
+<div class="container">
+    <div class="row">
+        <section class="main">
+            <div class="wrapper">
+                <div class="left-col d-flex flex-column align-items-center">
+                    {% if user.is_authenticated %}
+                    {% for sub in user.subscriptions.all %}
+                    {% for post in sub.posts.all %}
+                    <div class="post w-50 pb-2">
+                        <div class="info">
+                            <div class="user">
+                                <div class="profile-pic"><img src="{{ post.author.avatar.url }}" alt=""></div>
+                                <p class="username"><a href="{% url 'profile' post.author.pk %}">
+                                    {{ post.author.username }}</a></p>
+                            </div>
+                            <img src="img/option.PNG" class="options" alt="">
+                        </div>
+                        <img src="{{ post.image.url }}" class="post-image" alt="">
+                        <div class="post-content">
+                            <form action="{% url 'like' post.pk %}" method="post">
+                                {% csrf_token %}
+                                {% if request.user in post.user_likes.all %}
+                                <button style="border: none; background: none;" type="submit"><i
+                                        class="fa-solid fa-heart"></i></button>
+                                {% else %}
+                                <button style="border: none; background: none;" type="submit"><i
+                                        class="fa-regular fa-heart"></i></button>
+                                {% endif %}
+                            </form>
+                            <p class="likes">Лайки: {{ post.user_likes.count }}</p>
+                            <p class="description"><span><a href="{% url 'profile' post.author.pk %}">{{ post.author.username }}</a></span>
+                                {{ post.description }}
+                            </p>
+                            <p class="post-time">{{ post.created_at }}</p>
+                        </div>
+                        <form action="{% url 'comment' post.pk %}" method="post">
+                            <div class="comment-wrapper">
+                                <img src="{% static 'img/logos/smile.PNG' %}" class="icon" alt="">
+                                {% csrf_token %}
+                                {{ comment_form.text }}
+                                <button class="comment-btn">post</button>
+                            </div>
+                        </form>
+                        <div class="px-3 comment_block">
+                            {% for comment in post.comments.all %}
+                            <div class="d-flex my-2">
+                                <img class="me-2" style="width: 30px; border-radius: 100%;" src="{{ comment.author.avatar.url }}" alt="">
+                                <b class="me-2">{{ comment.author.username }}</b>
+                                <p>{{ comment.text }}</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endfor %}
+                    {% else %}
+                    <h2 class="pt-4">Войдите или зарегестрируйтесь, чтобы начать</h2>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

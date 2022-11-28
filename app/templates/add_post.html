@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap5 %}
+{% block content_block %}
+<div class="container pt-4 d-flex justify-content-center">
+    <div class="row w-50">
+        <form action="{% url 'add_post' %}" method="POST" enctype="multipart/form-data">
+            <div class="form">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% bootstrap_button button_type="submit" content='Добавить пост' %}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

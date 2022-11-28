@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% block title_blcok %}
+<title>Профиль</title>
+{% endblock %}
+{% block profile_link_style %}
+<link rel="stylesheet" href="{% static 'css/profile-style.css' %}">
+{% endblock %}
+{% block content_block %}
+<div class="container d-flex justify-content-center">
+    <div class="row w-75">
+        <header>
+            <div class="container">
+                <div class="profile">
+                    <div class="profile-image">
+                        <img src="{{ user_obj.avatar.url }}"
+                             alt="">
+                    </div>
+                    <div class="profile-user-settings">
+                        <h1 class="profile-user-name">{{ user_obj.username }}</h1>
+                        <button class="btn profile-edit-btn">Edit Profile</button>
+                        <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog"
+                                                                                                  aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="profile-stats">
+                        <ul>
+                            <li><span class="profile-stat-count">{{ posts.count }}</span> posts</li>
+                            <li data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <span class="profile-stat-count">{{ user_obj.subscribers.count }}</span>
+                                Подписчики
+                            </li>
+                            <li data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                <span class="profile-stat-count">{{ user_obj.subscriptions.count }}</span>
+                                Подписки
+                            </li>
+
+                            {% include 'partial/sub_modal.html' %}
+
+
+                        </ul>
+                        <form action="{% url 'subscribe' user_obj.pk %}" method="post">
+                            {% csrf_token %}
+                            {% if request.user in user_obj.subscribers.all %}
+                            <button style="font-size: 16px;" class="ms-4 mt-2 btn btn-secondary" type="submit">
+                                Отписаться
+                            </button>
+                            {% else %}
+                            <button style="font-size: 16px;" class="ms-4 mt-2 btn btn-primary" type="submit">
+                                Подписаться
+                            </button>
+                            {% endif %}
+                        </form>
+                    </div>
+                    <div class="profile-bio">
+                        <p><span class="profile-real-name">{{ user_obj.first_name }} {{ user_obj.last_name }}</span>
+                            {{ user_obj.about }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="container">
+                <div class="gallery">
+                    {% for post in posts %}
+                    <div class="gallery-item" tabindex="0">
+                        <img src="{{ post.image.url }}"
+                             class="gallery-image" alt="">
+                        <div class="gallery-item-info">
+                            <ul>
+                                <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i
+                                        class="fas fa-heart" aria-hidden="true"></i> 56
+                                </li>
+                                <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i
+                                        class="fas fa-comment" aria-hidden="true"></i> 2
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}

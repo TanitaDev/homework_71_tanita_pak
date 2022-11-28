@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap5 %}
+{% block title_blcok %}
+<title>Поиск</title>
+{% endblock %}
+{% block content_block %}
+<div class="container pt-4 w-75">
+    <div class="row d-flex flex-column align-items-center">
+        <form class="text-center w-75" action="" method="GET">
+            {% bootstrap_form form %}
+            {% bootstrap_button button_type="submit" content='Найти' %}
+        </form>
+        <div class="d-flex justify-content-center">
+            <div class="mt-4 d-flex flex-wrap w-75 justify-content-center">
+                {% for acc in accounts %}
+                <div class="mx-1 my-2 user_block w-25">
+                    <a class="d-flex align-items-center" href="{% url 'profile' acc.pk %}">
+                        <img class="me-2" style="width: 100px; border-radius: 100%;" src="{{ acc.avatar.url }}" alt="">
+                        <p>{{ acc.username }}</p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
