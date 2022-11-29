@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     "bootstrap5",
     "django_bootstrap5",
     "rest_framework",
-    "api"
+    'rest_framework.authtoken',
+    "api",
 ]
 
 MIDDLEWARE = [
@@ -81,6 +82,12 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
 }
 
 # Password validation
