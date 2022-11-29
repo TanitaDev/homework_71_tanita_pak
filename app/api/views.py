@@ -11,7 +11,7 @@ from posts.models import Post
 
 
 class PostViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     serializer_class = PostSerializer
     queryset = Post.objects.all()
 
@@ -58,8 +58,20 @@ class PostDetailView(APIView):
 
 
 class LikeApi(APIView):
-    def get(self, request, *args, **kwargs):
-        account = get_object_or_404(Profile)
-        likes = account.liked_posts.all()
-        serializer = PostSerializer(account)
-        return Response(serializer.data)
+    def post(self, request, *args, **kwargs):
+        post = get_object_or_404(Post, pk='pk')
+        account = get_object_or_404(Profile, pk='pk')
+        if post and account:
+            post.user_likes.add(account.pk)
+            return Response(status=200)
+        else:
+            return Response(status=404)
+
+    def delete(self, request, *args, **kwargs):
+        post = get_object_or_404(Post, pk='pk')
+        account = get_object_or_404(Profile, pk='pk')
+        if post and account:
+            post.user_likes.remove(account.pk)
+            return Response(status=200)
+        else:
+            return Response(status=404)
