@@ -1,0 +1,169 @@
+[
+{
+  "model": "posts.post",
+  "pk": 14,
+  "fields": {
+    "description": "fasd",
+    "image": "posts/image4_w1hzfxt.jpeg",
+    "author": 4,
+    "created_at": "2022-11-28T15:51:09.611Z"
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 15,
+  "fields": {
+    "description": "privet",
+    "image": "posts/av2_Zb1Obt4.png",
+    "author": 11,
+    "created_at": "2022-11-28T19:13:36.351Z"
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 16,
+  "fields": {
+    "description": "fewfw",
+    "image": "posts/img3_wbVvh1M.jpg",
+    "author": 1,
+    "created_at": "2022-11-29T09:14:36.587Z"
+  }
+},
+{
+  "model": "accounts.account",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$Idm6P2Y6fWMP7RT4u7JBFj$0BClFzZJ+w7V+BawY4I7j663gFlModND0lBc1Hh5/6c=",
+    "last_login": "2022-11-29T10:39:29.126Z",
+    "is_superuser": true,
+    "username": "root",
+    "first_name": "rootname",
+    "last_name": "rootsurname",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2022-11-27T18:13:20Z",
+    "email": "root@mail.ru",
+    "avatar": "avatars/av1.png",
+    "birthday": null,
+    "about": "",
+    "groups": [],
+    "user_permissions": [],
+    "liked_posts": [
+      14,
+      15,
+      16
+    ],
+    "subscriptions": [
+      1,
+      4,
+      8,
+      11
+    ],
+    "commented_posts": []
+  }
+},
+{
+  "model": "accounts.account",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$NSo5X6zDEUrRVhEgZlFjIe$nskPPiZGtU9qC4QOXLmKpSwDltg9TsPpBu3yFGzDLHU=",
+    "last_login": "2022-11-28T19:39:00.879Z",
+    "is_superuser": false,
+    "username": "user",
+    "first_name": "us",
+    "last_name": "userov",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-11-27T19:21:59Z",
+    "email": "user@mail.ru",
+    "avatar": "avatars/av2.png",
+    "birthday": null,
+    "about": "about mee",
+    "groups": [],
+    "user_permissions": [],
+    "liked_posts": [],
+    "subscriptions": [
+      1,
+      4
+    ],
+    "commented_posts": []
+  }
+},
+{
+  "model": "accounts.account",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$271ntpPONd7LDt5znqxdTI$tAPlJMS9cg2dhxPYyZuG7+iHVA99nvkEt/BP+DG9Cgo=",
+    "last_login": "2022-11-28T17:05:37.168Z",
+    "is_superuser": false,
+    "username": "user2",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-11-28T00:05:39Z",
+    "email": "user2@mail.ru",
+    "avatar": "avatars/defAv.jpg",
+    "birthday": null,
+    "about": "",
+    "groups": [],
+    "user_permissions": [],
+    "liked_posts": [],
+    "subscriptions": [
+      4
+    ],
+    "commented_posts": []
+  }
+},
+{
+  "model": "accounts.account",
+  "pk": 10,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$LD1w3a0kolZsfLjG3hrsTp$IQzxdZtPzczrqCDXvMXV2zmgVcA1elDKW2m9XJXJbt8=",
+    "last_login": "2022-11-28T00:08:16.802Z",
+    "is_superuser": false,
+    "username": "user3",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-11-28T00:08:16.647Z",
+    "email": "user3@mail.ru",
+    "avatar": "avatars/defAv.jpg",
+    "birthday": null,
+    "about": null,
+    "groups": [],
+    "user_permissions": [],
+    "liked_posts": [],
+    "subscriptions": [],
+    "commented_posts": []
+  }
+},
+{
+  "model": "accounts.account",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$J7lxaT84jQWiDRpHB8JUgA$Q1jdw26UY2wRjavC9VqBpkLy9tZkyFiV0MggPRP51BI=",
+    "last_login": "2022-11-28T19:13:03.427Z",
+    "is_superuser": false,
+    "username": "maksim",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-11-28T12:50:07.748Z",
+    "email": "khe_max@mail.ru",
+    "avatar": "avatars/defAv.jpg",
+    "birthday": null,
+    "about": null,
+    "groups": [],
+    "user_permissions": [],
+    "liked_posts": [],
+    "subscriptions": [
+      1,
+      11
+    ],
+    "commented_posts": []
+  }
+}
+]
