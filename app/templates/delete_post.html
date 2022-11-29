@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap5 %}
+{% block content_block %}
+<div class="container ps-4 pt-4 d-flex justify-content-center">
+    <div class="pt-4 row w-50">
+        <form action="{% url 'delete' post.pk %}" method="POST" enctype="multipart/form-data">
+            <div class="form">
+                {% csrf_token %}
+                {% bootstrap_button button_type="submit" content='Удалить пост' %}
+                <a class="ms-2" href="{% url 'profile' user.pk %}">Не удалять</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

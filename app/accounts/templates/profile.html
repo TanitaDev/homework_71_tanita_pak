@@ -35,9 +35,7 @@
                                 <span class="profile-stat-count">{{ user_obj.subscriptions.count }}</span>
                                 Подписки
                             </li>
-
                             {% include 'partial/sub_modal.html' %}
-
 
                         </ul>
                         <form action="{% url 'subscribe' user_obj.pk %}" method="post">
@@ -76,6 +74,8 @@
                                 <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i
                                         class="fas fa-comment" aria-hidden="true"></i> 2
                                 </li>
+                                <li><a href="{% url 'update' post.pk %}">Редактировать</a></li>
+                                <li><a href="{% url 'delete' post.pk %}">Удалить</a></li>
                             </ul>
                         </div>
                     </div>
